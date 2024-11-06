@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diva Virtual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .player {
+            width: 300px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .cover img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .info h2 {
+            font-size: 18px;
+            margin: 15px 0 5px;
+        }
+
+        .info p {
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        #play-pause {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: #1db954;
+            cursor: pointer;
+        }
+
+        #seek-bar {
+            width: 100%;
+            margin-left: 10px;
+        }
+
+        .comments-section {
+            margin-top: 20px;
+            width: 300px;
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 10px;
+            margin-left: 20px;
+        }
+
+        .comments-section h3 {
+            font-size: 16px;
+            color: #1db954;
+            margin-bottom: 10px;
+        }
+
+        .comment {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .comment-content p {
+            font-size: 14px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="player">
+        <div class="cover">
+            <img src="Diva Virutal.jpg" alt="Portada de la música">
+        </div>
+        <div class="info">
+            <h2>Diva Virtual</h2>
+            <p>3.1K Vistas</p>
+        </div>
+        <div class="controls">
+            <button id="play-pause">▶️</button>
+            <input type="range" id="seek-bar" value="0">
+        </div>
+        <audio id="audio" src="iceSiva.mp3"></audio>
+    </div>
+    
+    <div class="comments-section">
+        <h3>Comentarios</h3>
+        <div class="comment">
+            <img src="Nope" alt="Foto de perfil de usuario 1" class="profile-pic">
+            <div class="comment-content">
+                <p><strong>Dinico</strong> Ay guey</p>
+            </div>
+        </div>
+        <div class="comment">
+            <img src="https://yt3.googleusercontent.com/EsvVUC6vEij4RTRxUOj-f25WxHQu0wtZ_HLAyNdCI1BxPVnneeX51CjPiy7ET3ahiytQrrgrAw=s160-c-k-c0x00ffffff-no-rj" alt="Foto de perfil de usuario 2" class="profile-pic">
+            <div class="comment-content">
+                <p><strong>NFX Rockstars</strong> gg let's go</p>
+            </div>
+        </div>
+        <div class="comment">
+            <img src="https://th.bing.com/th/id/OIP.eAFM3X2julFMP7sqtl1nhQHaHa?w=186&h=184&c=7&r=0&o=5&pid=1.7" alt="Foto de perfil de usuario 3" class="profile-pic">
+            <div class="comment-content">
+                <p><strong>user991231</strong> Bueno, aquí si que se ve mejoracion.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('audio');
+        const playPauseButton = document.getElementById('play-pause');
+        const seekBar = document.getElementById('seek-bar');
+
+        playPauseButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseButton.textContent = '⏸️';
+            } else {
+                audio.pause();
+                playPauseButton.textContent = '▶️';
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            seekBar.value = progress;
+        });
+
+        seekBar.addEventListener('input', () => {
+            const newTime = (seekBar.value / 100) * audio.duration;
+            audio.currentTime = newTime;
+        });
+    </script>
+</body>
+</html>
