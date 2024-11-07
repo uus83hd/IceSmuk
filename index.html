@@ -67,7 +67,7 @@
 <body>
 
     <div>
-        <h1>Selector de Álbumes</h1>
+        <h1>Musica de la banda C-Dark</h1>
         <div class="album-container" id="albumContainer">
             <!-- Los álbumes se generarán aquí con JS -->
         </div>
@@ -78,7 +78,7 @@
         const albums = [
             { name: "It was a God Day", img: "IMG_20241026_192305.jpg" },
             { name: "Diva Virtual", img: "Diva Virutal.jpg" },
-            { name: "Album 3", img: "imagenes/album3.jpg" },
+            { name: "Andamios", img: "Andmios.jpg" },
             { name: "Album 4", img: "imagenes/album4.jpg" }
         ];
 
@@ -103,6 +103,13 @@
             if (index === 1) {
                 albumDiv.addEventListener("click", () => {
                     window.location.href = "DivaVirtual.html";
+                });
+            }
+
+            // Añadir evento de clic para el segundo álbum ("Diva Virtual")
+            if (index === 2) {
+                albumDiv.addEventListener("click", () => {
+                    window.location.href = "andamios.html";
                 });
             }
 
